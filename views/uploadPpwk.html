@@ -12,19 +12,19 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="nav navbar-nav">
-                    <li><a href="#!/epay/{{upload.agent.agentid_number}}/shipments">Active Shipments</a></li>
-                    <li><a href="#!/epay/{{upload.agent.agentid_number}}/blackouts">Blackouts</a></li>
+                    <li><a href="#!/{{upload.agent.agentid_number}}/shipments">Active Shipments</a></li>
+                    <li><a href="#!/{{upload.agent.agentid_number}}/blackouts">Blackouts</a></li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown"><span class="caret"></span>Claims</a>
                         <ul class="dropdown-menu">
-                            <li><a href="#!/epay/{{upload.agent.agentid_number}}/claims/active">Active</a></li>
-                            <li><a href="#!/epay/{{upload.agent.agentid_number}}/claims/history">History</a></li>
+                            <li><a href="#!/{{upload.agent.agentid_number}}/claims/active">Active</a></li>
+                            <li><a href="#!/{{upload.agent.agentid_number}}/claims/history">History</a></li>
                         </ul>
                     </li>
                     <li><a ng-click="home.findInvoice(upload.agent.agentid_number)">E-invoice</a></li>
-                    <li><a href="#!/epay/{{upload.agent.agentid_number}}/paperwork">Pending Paperwork</a></li>
-                    <li><a href="#!/epay/{{upload.agent.agentid_number}}/users">Users</a></li>
-                    <li><a href="#!/epay/{{upload.agent.agentid_number}}/info">Info</a></li>
+                    <li><a href="#!/{{upload.agent.agentid_number}}/paperwork">Pending Paperwork</a></li>
+                    <li><a href="#!/{{upload.agent.agentid_number}}/users">Users</a></li>
+                    <li><a href="#!/{{upload.agent.agentid_number}}/info">Info</a></li>
                 </ul>
             </div>
         </div>

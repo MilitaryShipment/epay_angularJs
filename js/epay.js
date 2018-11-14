@@ -43,7 +43,7 @@
             self.checkCookies = function(){
                 var cookie = $cookies.get('authID');
                 if(!cookie){
-                    $location.path('/epay/login');
+                    $location.path('/login');
                 }
             };
             self.getAgentInfo = function(){
@@ -127,7 +127,7 @@
             self.checkCookies = function(){
                 var cookie = $cookies.get('authID');
                 if(!cookie){
-                    $location.path('/epay/login');
+                    $location.path('/login');
                 }
             };
             self.getAgentInfo = function(){
@@ -161,7 +161,7 @@
             self.checkCookies = function(){
                 var cookie = $cookies.get('authID');
                 if(!cookie){
-                    $location.path('/epay/login');
+                    $location.path('/login');
                 }
             };
             self.getAgentInfo = function(){
@@ -226,7 +226,7 @@
             self.checkCookies = function(){
                 var cookie = $cookies.get('authID');
                 if(!cookie){
-                    $location.path('/epay/login');
+                    $location.path('/login');
                 }
             };
             self.getAgentInfo = function(){
