@@ -19,7 +19,7 @@
     "@flowjs/ng-flow": "",
     "ui-select": "",
     "angular-sanitize": "~1.6.8",
-    "angular-sweetalert": ""
+    "angular-sweetalert": "latest"
   },
   "author": "",
   "license": "ISC"
