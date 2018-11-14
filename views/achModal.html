@@ -1,0 +1,17 @@
+<div id="achModal" class="modal fade" role="dialog" ng-controller="AchController as ach">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">ACH</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Acct #:<input type="number" ng-model="ach.accountNum" min="100000000" max="999999999"></label>
+                    <label>Rout #:<input type="number" ng-model="ach.routingNum"></label>
+                    <button class="btn btn-sm btn-success" ng-click="ach.save()" data-dismiss="modal">Submit</button>
+                </div>
+            </div>
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+</div>

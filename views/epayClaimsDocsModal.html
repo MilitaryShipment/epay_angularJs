@@ -1,0 +1,20 @@
+<div id="claimsDocsModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Documents</h4>
+            </div>
+            <div class="modal-body" ng-switch="claim.docs.length">
+                <div class="list-group" ng-repeat="d in claim.docs" ng-switch-default>
+                    <div class="list-group-item"><a href="{{d.target_location}}" target="_blank">{{d.form_name}}</a></div>
+                </div>
+                <div ng-switch-when="0">
+                    <h3>Uh Oh!</h3>
+                    <h5>I cant find any documents to view for this shipment!</h5>
+                </div>
+            </div>
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+</div>

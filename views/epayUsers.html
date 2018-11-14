@@ -1,0 +1,60 @@
+<div ng-controller="WebUserConroller as user">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">{{user.agent.agentid_number}}</a>
+                <a class="navbar-brand" href="/">{{user.agent.full_legal_name}}</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="#!/epay/{{user.agent.agentid_number}}/shipments">Active Shipments</a></li>
+                    <li><a href="#!/epay/{{user.agent.agentid_number}}/blackouts">Blackouts</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown"><span class="caret"></span>Claims</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#!/epay/{{user.agent.agentid_number}}/claims/active">Active</a></li>
+                            <li><a href="#!/epay/{{user.agent.agentid_number}}/claims/history">History</a></li>
+                        </ul>
+                    </li>
+                    <li><a ng-click="home.findInvoice(user.agent.agentid_number)">E-invoice</a></li>
+                    <li><a href="#!/epay/{{user.agent.agentid_number}}/paperwork">Pending Paperwork</a></li>
+                    <li><a href="#!/epay/{{user.agent.agentid_number}}/users">Users</a></li>
+                    <li><a href="#!/epay/{{user.agent.agentid_number}}/info">Info</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div ng-include="'views/epayNewUserModal.html'"></div>
+    <div ng-include="'views/epayEditUserModal.html'"></div>
+    <div class="jumbotron text-center">
+        <h1>Web Users</h1>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <span style="float:right">
+                    <button class="btn btn-xs btn-success" data-toggle="modal" data-target="#newUserModal">Add</button>
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="well" ng-repeat="u in user.users">
+                    <div class="list-group">
+                        <div class="list-group-item">{{u.user_login}} ({{u.user_name}})
+                            <span style="float:right">
+                                <button class="btn btn-xs btn-info" data-toggle="modal" data-target="#editUserModal" ng-click="user.editUser = u">Edit</button>
+                            </span>
+                        </div>
+                        <!--<div class="list-group-item-info">{{b.gbloc}},{{b.area}},{{b.base_name}}</div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

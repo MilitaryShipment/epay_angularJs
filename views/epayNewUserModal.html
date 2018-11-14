@@ -1,0 +1,18 @@
+<div id="newUserModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add</h4>
+            </div>
+            <div class="modal-body">
+                <label>Login: <input type="text" class="form-control" ng-model="user.newUser.user_login"></label>
+                <label>Password: <input type="password" class="form-control" ng-model="user.newUser.user_password"></label>
+                <label>Name: <input type="text" class="form-control" ng-model="user.newUser.user_name"></label>
+                <label>Email: <input type="email" class="form-control" ng-model="user.newUser.b1_user_e_mail_address_14"></label>
+                <button class="btn btn-success" ng-click="user.addUser()" data-dismiss="modal">Save</button>
+            </div>
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+</div>

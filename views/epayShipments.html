@@ -1,0 +1,60 @@
+<div ng-controller="ShipmentController as shipment">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">{{shipment.agent.agentid_number}}</a>
+                <a class="navbar-brand" href="/">{{shipment.agent.full_legal_name}}</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="#!/epay/{{shipment.agent.agentid_number}}/shipments">Active Shipments</a></li>
+                    <li><a href="#!/epay/{{shipment.agent.agentid_number}}/blackouts">Blackouts</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown"><span class="caret"></span>Claims</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#!/epay/{{shipment.agent.agentid_number}}/claims/active">Active</a></li>
+                            <li><a href="#!/epay/{{shipment.agent.agentid_number}}/claims/history">History</a></li>
+                        </ul>
+                    </li>
+                    <li><a ng-click="home.findInvoice(shipment.agent.agentid_number)">E-invoice</a></li>
+                    <li><a href="#!/epay/{{shipment.agent.agentid_number}}/paperwork">Pending Paperwork</a></li>
+                    <li><a href="#!/epay/{{shipment.agent.agentid_number}}/users">Users</a></li>
+                    <li><a href="#!/epay/{{shipment.agent.agentid_number}}/info">Info</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="jumbotron text-center">
+        <h1>Shipments</h1>
+    </div>
+    <div class="container">
+        <div class="row" ng-switch="shipment.shipments.length">
+            <div class="col-sm-12" ng-switch-default>
+                <div class="well" ng-repeat="s in shipment.shipments">
+                    <div class="list-group">
+                        <div class="list-group-item">Pickup: {{s.pickup_date | date}}</div>
+                        <div class="list-group-item">GBL: {{s.gbl_dps}}</div>
+                        <div class="list-group-item">Order Number: {{s.registration_number}}</div>
+                        <div class="list-group-item">Member: {{s.full_name}}</div>
+                        <div class="list-group-item">OA: {{s.orig_agent_id}}</div>
+                        <div class="list-group-item">DA: {{s.dest_agent_id}}</div>
+                        <div class="list-group-item">Hauler: {{s.hauler_agent_id}}</div>
+                    </div>
+                    <!--<div class="btn-group">-->
+                        <!--<a class="btn btn-default btn-xs" href="http://militaryshipment.com/services/#!/invoice/{{shipment.agent.agentid_number}}/{{s.gbl_dps}}">Invoice</a>-->
+                    <!--</div>-->
+                </div>
+            </div>
+            <div class="col-sm-12" ng-switch-when="0">
+                <h3>Uh oh!</h3>
+                <h4>You don't appear to have any active shipments with us!</h4>
+                <h5>Feel free to visit our <a href="http://militaryshipment.com/ton/main.php?q=view">Tonnage List</a> to change that!</h5>
+            </div>
+        </div>
+    </div>
+</div>

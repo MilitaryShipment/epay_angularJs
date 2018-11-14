@@ -1,0 +1,26 @@
+{
+  "name": "militaryshipment_epay",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server -a 0.0.0.0 -p 8081"
+  },
+  "dependencies": {
+    "http-server": "",
+    "bootstrap": "~3",
+    "jquery": "",
+    "angular": "~1.6",
+    "angular-toastr": "",
+    "angular-cookies": "~1.6.8",
+    "angular-route": "~1.6.8",
+    "allmighty-autocomplete": "",
+    "@flowjs/ng-flow": "",
+    "ui-select": "",
+    "angular-sanitize": "~1.6.8",
+    "angular-sweetalert": ""
+  },
+  "author": "",
+  "license": "ISC"
+}

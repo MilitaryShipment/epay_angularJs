@@ -1,0 +1,53 @@
+<div ng-controller="PreviewController as preview">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">{{preview.agent.agentid_number}}</a>
+                <a class="navbar-brand" href="/">{{preview.agent.full_legal_name}}</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="#!/epay/{{preview.agent.agentid_number}}/shipments">Active Shipments</a></li>
+                    <li><a href="#!/epay/{{preview.agent.agentid_number}}/blackouts">Blackouts</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown"><span class="caret"></span>Claims</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#!/epay/{{preview.agent.agentid_number}}/claims/active">Active</a></li>
+                            <li><a href="#!/epay/{{preview.agent.agentid_number}}/claims/history">History</a></li>
+                        </ul>
+                    </li>
+                    <li><a ng-click="home.findInvoice(preview.agent.agentid_number)">E-invoice</a></li>
+                    <li><a href="#!/epay/{{preview.agent.agentid_number}}/paperwork">Pending Paperwork</a></li>
+                    <li><a href="#!/epay/{{preview.agent.agentid_number}}/users">Users</a></li>
+                    <li><a href="#!/epay/{{preview.agent.agentid_number}}/info">Info</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>Congratulations!</h1>
+                <h3>Your Invoice is complete</h3>
+                <p>Please remember, you can always go <a ng-click="preview.goBack()">back</a> or return to
+                    <br>
+                    <a ng-href="http://militaryshipment.com/services/#!{{preview.thisUrl}}">http://militaryshipment.com/services/#!/{{preview.thisUrl}}</a> and makes changes to your invoice.
+                    <br>
+                    <span style="color:red">However, please remember to <u>SAVE</u> your changes or they will be lost</span>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <iframe ng-src="{{preview.pdfUrl}}" height="600" width="430"></iframe>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+    </div>
+</div>

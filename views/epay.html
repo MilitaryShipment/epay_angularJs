@@ -1,0 +1,47 @@
+<div ng-controller="EpayController as epay">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">{{epay.agent.agentid_number}}</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="nav navbar-nav">
+                    <li><a ng-click="epay.setSelection('AC')">Active Claims</a></li>
+                    <li><a ng-click="epay.setSelection('AS')">Active Shipments</a></li>
+                    <li><a ng-click="epay.setSelection('B')">Blackouts</a></li>
+                    <li><a ng-click="epay.setSelection('AE')">E-Pay</a></li>
+                    <li><a ng-click="epay.setSelection('HC')">History Claims</a></li>
+                    <li><a ng-click="epay.setSelection('HE')">History E-Pay</a></li>
+                    <li><a ng-click="epay.setSelection('U')">Users</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row" ng-switch="epay.selection">
+            <div class="col-sm-12" ng-switch-default>
+                <div class="list-group">
+                    <div class="list-group-item" ng-repeat="e in epay.epayImages">{{e}}</div>
+                </div>
+            </div>
+            <div class="col-sm-12" ng-switch-when="AS">
+                <div class="list-group">
+                    <div class="list-group-item" ng-repeat="s in epay.shipments">
+                        <span>PickUp: {{s.pickup_date | date}}</span><br>
+                        <span>Gbl:{{s.gbl_dps}}</span><br>
+                        <span>Order Number: {{s.registration_number}}</span><br>
+                        <span>Member: {{s.full_name}}</span><br>
+                        <span>OA: {{s.orig_agent_id}}</span><br>
+                        <span>DA: {{s.dest_agent_id}}</span><br>
+                        <span>HAULER: {{s.hauler_agent_id}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

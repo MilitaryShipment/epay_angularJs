@@ -1,0 +1,57 @@
+<div ng-controller="BlackOutController as black">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">{{black.agent.agentid_number}}</a>
+                <a class="navbar-brand" href="/">{{black.agent.full_legal_name}}</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="#!/epay/{{black.agent.agentid_number}}/shipments">Active Shipments</a></li>
+                    <li><a href="#!/epay/{{black.agent.agentid_number}}/blackouts">Blackouts</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown"><span class="caret"></span>Claims</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#!/epay/{{black.agent.agentid_number}}/claims/active">Active</a></li>
+                            <li><a href="#!/epay/{{black.agent.agentid_number}}/claims/history">History</a></li>
+                        </ul>
+                    </li>
+                    <li><a ng-click="home.findInvoice(black.agent.agentid_number)">E-invoice</a></li>
+                    <li><a href="#!/epay/{{black.agent.agentid_number}}/paperwork">Pending Paperwork</a></li>
+                    <li><a href="#!/epay/{{black.agent.agentid_number}}/users">Users</a></li>
+                    <li><a href="#!/epay/{{black.agent.agentid_number}}/info">Info</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="jumbotron text-center">
+        <h1>Blackouts</h1>
+    </div>
+    <div class="container">
+        <div class="row" ng-switch="black.blackouts.length">
+            <div ng-include="'views/epayNewBlackoutModal.html'"></div>
+            <div class="col-sm-12" ng-switch-default>
+                <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#newBlackoutModal" ng-click="black.buildGblocList();black.buildTypes()">Add</button>
+                <div class="well" ng-repeat="b in black.blackouts">
+                    <div class="list-group">
+                        <div class="list-group-item">{{b.blackout_start_date | date}} - {{b.blackout_end_date | date}}</div>
+                        <span ng-switch="b.orig_dest">
+                            <div class="list-group-item" ng-switch-when="O">Origin</div>
+                            <div class="list-group-item" ng-switch-default>Destination</div>
+                        </span>
+                        <div class="list-group-item">{{b.gbloc}},{{b.area}},{{b.base_name}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12" ng-switch-when="0">
+                <h3>You don't appear to have any Blackouts.</h3>
+                <h4>Feel free to <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#newBlackoutModal" ng-click="black.buildGblocList();black.buildTypes()">Add</button> one</h4>
+            </div>
+        </div>
+    </div>
+</div>

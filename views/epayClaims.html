@@ -1,0 +1,63 @@
+<div ng-controller="ClaimsController as claim">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">{{claim.agent.agentid_number}}</a>
+                <a class="navbar-brand" href="/">{{claim.agent.full_legal_name}}</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="#!/epay/{{claim.agent.agentid_number}}/shipments">Active Shipments</a></li>
+                    <li><a href="#!/epay/{{claim.agent.agentid_number}}/blackouts">Blackouts</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown"><span class="caret"></span>Claims</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#!/epay/{{claim.agent.agentid_number}}/claims/active">Active</a></li>
+                            <li><a href="#!/epay/{{claim.agent.agentid_number}}/claims/history">History</a></li>
+                        </ul>
+                    </li>
+                    <li><a ng-click="home.findInvoice(claim.agent.agentid_number)">E-invoice</a></li>
+                    <li><a href="#!/epay/{{claim.agent.agentid_number}}/paperwork">Pending Paperwork</a></li>
+                    <li><a href="#!/epay/{{claim.agent.agentid_number}}/users">Users</a></li>
+                    <li><a href="#!/epay/{{claim.agent.agentid_number}}/info">Info</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="jumbotron text-center">
+        <h1>{{claim.option.toUpperCase()}} Claims</h1>
+    </div>
+    <div class="container" ng-switch="claim.loading">
+        <div class="row" ng-switch-when="true">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <img src="/images/loading.gif" height="200" width="200">
+                <h3>Loading...</h3>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+        <div class="row" ng-switch-default ng-switch="claim.claims.length">
+            <div class="col-sm-12" ng-switch-default>
+                <div class="well" ng-repeat="c in claim.claims">
+                    <div class="list-group">
+                        <div class="list-group-item">
+                            {{c.gbl_number}} | {{c.last_name}}, {{c.first_name}}
+                            <button class="btn btn-xs btn-info" style="float:right" ng-click="claim.getDocs(c.gbl_number)" data-toggle="modal" data-target="#claimsDocsModal">View Docs</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12" ng-switch-when="0">
+                <h1>Uh Oh!</h1>
+                <h4>You don't appear to have any {{claim.option}} claims.</h4>
+                <h5>Please try again later.</h5>
+            </div>
+        </div>
+        <div ng-include="'views/epayClaimsDocsModal.html'"></div>
+    </div>
+</div>

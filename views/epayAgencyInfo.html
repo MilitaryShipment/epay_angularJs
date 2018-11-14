@@ -1,0 +1,86 @@
+<div ng-controller="AgentUpdateController as update">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">{{update.agent.agentid_number}}</a>
+                <a class="navbar-brand" href="/">{{update.agent.full_legal_name}}</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="#!/epay/{{update.agent.agentid_number}}/shipments">Active Shipments</a></li>
+                    <li><a href="#!/epay/{{update.agent.agentid_number}}/blackouts">Blackouts</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown"><span class="caret"></span>Claims</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#!/epay/{{update.agent.agentid_number}}/claims/active">Active</a></li>
+                            <li><a href="#!/epay/{{update.agent.agentid_number}}/claims/history">History</a></li>
+                        </ul>
+                    </li>
+                    <li><a ng-click="home.findInvoice(update.agent.agentid_number)">E-invoice</a></li>
+                    <li><a href="#!/epay/{{update.agent.agentid_number}}/paperwork">Pending Paperwork</a></li>
+                    <li><a href="#!/epay/{{update.agent.agentid_number}}/users">Users</a></li>
+                    <li><a href="#!/epay/{{update.agent.agentid_number}}/info">Info</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="jumbotron text-center">
+        <h1>Company Info</h1>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2>Financial</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                <div class="well">
+                    <div ng-include="'views/achModal.html'"></div>
+                    <button class="btn btn-xs btn-info" data-target="#achModal" data-toggle="modal">Update ACH Info</button>
+                </div>
+                <!--<div class="well">-->
+                    <!--<h3>W9</h3>-->
+                    <!--<button class="btn btn-info">Download</button>-->
+                    <!--<button class="btn btn-success">Updload</button>-->
+                <!--</div>-->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <h2>Common Owner Group</h2>
+            </div>
+        </div>
+        <div class="row" ng-switch="update.cog.agents.length">
+            <div class="col-sm-12" ng-switch-default>
+                <div ng-repeat="agent in update.cog.agents">{{agent.full_legal_name}}</div>
+                <div>
+                    <h6>Please feel free to <button class="btn btn-info btn-xs" data-toggle="" data-target="" ng-click="">Add</button> an agency</h6>
+                </div>
+            </div>
+            <div class="col-sm-12" ng-switch-when="1">
+                <h5>You appear to be in a group all your own.</h5>
+                <h6>Please feel free to <button class="btn btn-info btn-xs" data-toggle="" data-target="" ng-click="">Add</button> an agency</h6>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <h2>Agency Agreements</h2>
+            </div>
+        </div>
+        <div class="row" ng-switch="update.contracts.length">
+            <div class="col-sm-12" ng-switch-default>
+                <div ng-repeat="contract in update.contracts">{{contract.template}}</div>
+            </div>
+            <div class="col-sm-12" ng-switch-when="0">
+                <h5>You do not appear to have entered into a contractual agreement with us.</h5>
+                <h6>Please feel free to <button class="btn btn-info btn-xs" data-toggle="" data-target="" ng-click="">change</button> that.</h6>
+            </div>
+        </div>
+    </div>
+</div>

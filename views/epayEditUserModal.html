@@ -1,0 +1,20 @@
+<div id="editUserModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Edit</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Login: <input type="text" class="form-control" ng-model="user.editUser.user_login"></label>
+                    <label>Password: <input type="text" class="form-control" ng-model="user.editUser.user_password"></label>
+                    <label>Name: <input type="text" class="form-control" ng-model="user.editUser.user_name"></label>
+                    <label>Email: <input type="email" class="form-control" ng-model="user.editUser.b1_user_e_mail_address_14"></label>
+                    <button class="btn btn-success" ng-click="user.updateUser()" data-dismiss="modal">Save</button>
+                </div>
+            </div>
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+</div>
